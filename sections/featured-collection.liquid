@@ -77,7 +77,9 @@
         role="list"
         aria-label="{{ 'general.slider.name' | t }}"
       >
-        {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+        {%- for product in section.settings.collection.products
+          limit: section.settings.products_to_show
+        -%}
           <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
             class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -104,7 +106,9 @@
                 data-cascade
               {% endif %}
             >
-              {% render 'card-product', show_vendor: section.settings.show_vendor %}
+              {% render 'card-product',
+                show_vendor: section.settings.show_vendor
+              %}
             </li>
           {%- endfor -%}
         {%- endfor -%}
@@ -399,7 +403,7 @@
     {
       "type": "checkbox",
       "id": "enable_quick_add",
-      "default": false,
+      "default": true,
       "label": "t:sections.featured-collection.settings.enable_quick_buy.label"
     },
     {
