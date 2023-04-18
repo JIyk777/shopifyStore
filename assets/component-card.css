@@ -82,6 +82,7 @@
 }
 
 .card-information {
+  padding-top: 10px;
   text-align: var(--text-alignment);
 }
 
@@ -345,7 +346,7 @@
 
 .card-information > * {
   line-height: calc(1 + 0.4 / var(--font-body-scale));
-  color: rgb(var(--color-foreground));
+  color: black;
 }
 
 .card-information > .price {
