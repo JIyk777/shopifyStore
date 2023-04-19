@@ -231,7 +231,7 @@
             -%}
 
             {% if card_product.variants.size > 1 %}
-              <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
+              {% comment %} <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
                 <select name="select" class="variant-select">
                   {% for variant in card_product.variants %}
                     <!-- Supplement an id here instead of using 'name' -->
@@ -240,7 +240,8 @@
                     </option>
                   {% endfor %}
                 </select>
-              </modal-opener>
+              </modal-opener> {% endcomment %}
+              {%render 'product-variant-options'%}
             {% endif %}
 
             <product-form>
