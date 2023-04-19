@@ -224,14 +224,23 @@
             {%- liquid
               assign money_price = card_product.price | money
               assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id
-              assign qty_rules = false
+              assign qty_rules = true
               if card_product.selected_or_first_available_variant.quantity_rule.min > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
                 assign qty_rules = true
               endif
             -%}
 
-             {% if qty_rules %}
-              hi
+            {% if card_product.variants.size > 1 %}
+              <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
+                <select name="select" class="variant-select">
+                  {% for variant in card_product.variants %}
+                    <!-- Supplement an id here instead of using 'name' -->
+                    <option value="value1" class="variant-select-options">
+                      {{ variant.title }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </modal-opener>
             {% endif %}
 
             <product-form>
